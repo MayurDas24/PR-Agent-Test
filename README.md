@@ -1,44 +1,45 @@
-PR Review Agent – Demo
+🚀 PR Review Agent – AI-Powered Code Review Demo
 
-A lightweight tool that analyzes code changes using LLM-based multi-agent reasoning.
-It accepts unified diffs or GitHub Pull Request diffs and returns structured, actionable review comments.
+A lightweight AI-based Pull Request Review Agent that reads unified diffs or GitHub PR diffs and generates structured, actionable code review feedback.
+Built with FastAPI, LLM multi-agent reasoning, and a simple web UI.
 
-🚀 Features
+✨ Features
 
-Paste a unified diff or fetch a GitHub PR
+🔍 Analyze unified diffs (paste or upload)
 
-Detects:
+🔗 Fetch and review GitHub Pull Requests
 
-Hardcoded secrets & security risks
+🤖 Multi-agent reasoning:
 
-TODO/FIXME & style issues
+Security issues (e.g., hardcoded secrets)
 
-Performance problems (e.g., nested loops)
+Style issues (TODO, FIXME)
 
-Missing error handling
+Performance concerns (nested loops, inefficient code)
 
-Produces structured JSON output
+Robustness (missing error handling)
 
-Optional: Auto-post review comments to the PR (GitHub PAT required)
+📝 Outputs structured JSON with:
 
-🧪 Quick Test
-Example diff:
+path, line, type, message, suggested_fix, confidence
+
+💬 Optional: Post comments directly to GitHub PRs (requires GitHub PAT)
+
+🧪 Example Diff to Test
 diff --git a/app.py b/app.py
 --- a/app.py
 +++ b/app.py
 @@ -1,5 +1,8 @@
 -MY_SECRET = "12345"
-+MY_SECRET = "HARDCODED_SECRET"
++MY_SECRET = "HARDCODED_SECRET_ABC"
 
-# TODO: optimize
+# TODO: optimize this nested loop
 for i in range(1000):
-    pass
+    for j in range(500):
+        pass
 
-Example PR review:
 
-Owner → MayurDas24
-Repo → PR-Agent-Test
-PR → 1 or 2
+Use this in the UI to see the tool generate findings.
 
 ▶️ Run Locally (Windows + PowerShell)
 git clone https://github.com/<your-username>/PR-Agent-Test.git
@@ -50,14 +51,28 @@ pip install -r requirements.txt
 
 uvicorn main:app --reload
 
-📁 Key Files
-diff_parser.py
-reviewer_langchain.py
-github_integration.py
-agents.py
-main.py
-static/
 
-📌 Note
+Open the app in your browser:
+👉 http://127.0.0.1:8000
 
-This project is a demo submission showcasing backend design, GitHub API use, and LLM-based code review automation.
+📁 Project Structure
+agents.py               – LLM agents for security/style/performance checks
+diff_parser.py          – Unified diff parser
+reviewer_langchain.py   – Multi-agent orchestration
+github_integration.py   – GitHub PR fetch + comment API
+main.py                 – FastAPI server + endpoints
+static/index.html       – Web UI for testing the agent
+
+🎯 Purpose of This Repository
+
+This project is a demo submission showcasing:
+
+Backend engineering
+
+FastAPI development
+
+GitHub API usage
+
+LLM integration & orchestration
+
+A working code-review agent with UI
