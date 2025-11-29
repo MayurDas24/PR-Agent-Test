@@ -1,4 +1,4 @@
-﻿API_KEY = "HARDCODEDSECRET123"
+﻿API_KEY = \"HARDCODEDSECRET123\"
 
 # TODO: optimize this loop
 def compute(x):
